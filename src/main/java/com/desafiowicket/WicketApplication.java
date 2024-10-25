@@ -1,7 +1,10 @@
 package com.desafiowicket;
 
+import com.desafiowicket.page.ListClientesPage;
+import org.apache.wicket.application.IComponentInitializationListener;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
 /**
  * Application object for your web application.
@@ -17,7 +20,7 @@ public class WicketApplication extends WebApplication
 	@Override
 	public Class<? extends WebPage> getHomePage()
 	{
-		return HomePage.class;
+		return ListClientesPage.class;
 	}
 
 	/**
@@ -28,6 +31,6 @@ public class WicketApplication extends WebApplication
 	{
 		super.init();
 
-		// add your configuration here
+		getComponentInitializationListeners().add((IComponentInitializationListener) new SpringComponentInjector(this));
 	}
 }

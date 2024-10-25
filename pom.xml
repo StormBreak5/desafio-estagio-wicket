@@ -51,9 +51,14 @@
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-spring</artifactId>
-			<version>9.0.0</version> <!-- Integração com Spring -->
+			<version>9.0.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>5.3.10</version> <!-- Verifique se essa versão é compatível com a do seu Spring -->
+		</dependency>
 
 		<!-- LOGGING DEPENDENCIES - LOG4J -->
 		<dependency>

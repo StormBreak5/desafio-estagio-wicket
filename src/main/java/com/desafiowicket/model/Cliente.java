@@ -2,7 +2,6 @@ package com.desafiowicket.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 public class Cliente implements Serializable {
 
