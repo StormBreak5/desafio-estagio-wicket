@@ -1,17 +1,16 @@
 package com.desafiowicket.pages;
 
 import com.desafiowicket.model.ClienteForm;
+import com.desafiowicket.model.TipoPessoa;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.Radio;
-import org.apache.wicket.markup.html.form.RadioGroup;
-import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.form.*;
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class NewClient extends BasePage{
@@ -40,6 +39,24 @@ public class NewClient extends BasePage{
 //        tipoPessoa.add(new Radio("fisica", new Model<String>()));
 //        tipoPessoa.add(new Radio("juridica", new Model<String>()));
 
+        DropDownChoice<TipoPessoa> comboTipoPessoa = new DropDownChoice<>("tipoPessoa",
+                Arrays.asList(TipoPessoa.values()),
+                new IChoiceRenderer<TipoPessoa>() {
+                    private static final long serialVersionUID = 1L;
+
+                    @Override
+                    public Object getDisplayValue(TipoPessoa tipoPessoa) {
+                        return tipoPessoa.getLabel();
+                    }
+
+                    @Override
+                    public String getIdValue(TipoPessoa object, int index) {
+                        return object.name();
+                    }
+
+                    @Override
+                    public void detach() {}
+                });
         TextField<String> inputCpfCnpj = new TextField<String>("cpfCnpj");
         TextField<String> inputEmail = new TextField<String>("email");
         //TextField<Boolean> inputAtivo = new TextField<Boolean>("ativo");
@@ -61,6 +78,7 @@ public class NewClient extends BasePage{
                 inputDataNascimento,
                 inputRazaoSocial,
                 inputInscricaoEstadual,
-                inputDataCriacao);
+                inputDataCriacao,
+                comboTipoPessoa);
     }
 }

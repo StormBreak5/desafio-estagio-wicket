@@ -8,6 +8,11 @@
 <wicket:extend>
     <h1 wicket:id="titulo">[titulo]</h1>
     <form wicket:id="formCliente" >
+        <select wicket:id="tipoPessoa">
+            <option value="" selected>Tipo de Pessoa</option>
+            <option>[primeira]</option>
+            <option>[segunda]</option>
+        </select>
         <input wicket:id="nome" type="text" placeholder="Nome" />
         <input wicket:id="razaoSocial" type="text" placeholder="Razão Social" />
         <input wicket:id="cpfCnpj" type="text" placeholder="CPF" />

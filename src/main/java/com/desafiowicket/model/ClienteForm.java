@@ -6,6 +6,7 @@ import java.util.Date;
 public class ClienteForm implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    private TipoPessoa tipoPessoa;
     private String cpfCnpj;
     private String email;
     private Boolean ativo;
@@ -90,6 +91,14 @@ public class ClienteForm implements Serializable {
 
     public void setDataCriacao(Date dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    public TipoPessoa getTipoPessoa() {
+        return tipoPessoa;
+    }
+
+    public void setTipoPessoa(TipoPessoa tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
     }
 
     @Override
