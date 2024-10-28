@@ -1,0 +1,7 @@
+com\desafiowicket\model\ClienteForm.class
+com\desafiowicket\pages\NewClient.class
+com\desafiowicket\WicketApplication.class
+com\desafiowicket\HomePage.class
+com\desafiowicket\pages\NewClient$1.class
+com\desafiowicket\pages\ClientList.class
+com\desafiowicket\pages\BasePage.class
