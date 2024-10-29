@@ -6,22 +6,54 @@
 </head>
 <body>
 <wicket:extend>
-    <h1 wicket:id="titulo">[titulo]</h1>
-    <form wicket:id="formCliente" >
-        <select wicket:id="tipoPessoa">
-            <option>[primeira]</option>
-            <option>[segunda]</option>
-        </select>
-        <input wicket:id="nome" type="text" placeholder="Nome" />
-        <input wicket:id="razaoSocial" type="text" placeholder="Razão Social" />
-        <input wicket:id="cpfCnpj" type="text" placeholder="CPF" />
-        <input wicket:id="rg" type="text" placeholder="RG" />
-        <input wicket:id="incricaoEstadual" type="text" placeholder="Inscrição Estadual" />
-        <input wicket:id="dataNascimento" type="date" placeholder="Data de Nascimento" />
-        <input wicket:id="dataCriacao" type="date" placeholder="Data de Criação" />
-        <input wicket:id="email" type="text" placeholder="E-mail" />
-        <button type="submit" name="submit">Cadastrar</button>
-    </form>
+    <div class="container">
+        <h1 wicket:id="titulo">[titulo]</h1>
+
+        <div class="form-container">
+            <form wicket:id="formCliente" class="client-form" >
+                <div>
+                    <label>Selecione o tipo de pessoa</label>
+                    <select wicket:id="tipoPessoa">
+                        <option>[primeira]</option>
+                        <option>[segunda]</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Nome</label>
+                    <input wicket:id="nome" type="text" placeholder="Nome" />
+                </div>
+                <div>
+                    <label>Razão Social</label>
+                    <input wicket:id="razaoSocial" type="text" placeholder="Razão Social" />
+                </div>
+                <div>
+                    <label>CPF</label>
+                    <input wicket:id="cpfCnpj" type="text" placeholder="CPF" />
+                </div>
+                <div>
+                    <label>RG</label>
+                    <input wicket:id="rg" type="text" placeholder="RG" />
+                </div>
+                <div>
+                    <label>Inscrição Estadual</label>
+                    <input wicket:id="incricaoEstadual" type="text" placeholder="Inscrição Estadual" />
+                </div>
+                <div>
+                    <label>Data de Nascimento</label>
+                    <input wicket:id="dataNascimento" type="date" placeholder="Data de Nascimento" />
+                </div>
+                <div>
+                    <label>Data de Criação</label>
+                    <input wicket:id="dataCriacao" type="date" placeholder="Data de Criação" />
+                </div>
+                <div>
+                    <label>E-mail</label>
+                    <input wicket:id="email" type="text" placeholder="E-mail" />
+                </div>
+                <button type="submit" name="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
 </wicket:extend>
 </body>
 </html>

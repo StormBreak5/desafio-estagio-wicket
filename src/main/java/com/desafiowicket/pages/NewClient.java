@@ -3,10 +3,15 @@ package com.desafiowicket.pages;
 import com.desafiowicket.model.ClienteForm;
 import com.desafiowicket.model.TipoPessoa;
 import com.desafiowicket.service.HttpService;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.*;
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.request.resource.PackageResourceReference;
 
 import java.util.Arrays;
 
@@ -50,6 +55,17 @@ public class NewClient extends BasePage{
                     public void detach() {}
                 });
 
+        comboTipoPessoa.add(new AjaxFormComponentUpdatingBehavior("change") {
+            @Override
+            protected void onUpdate(AjaxRequestTarget target) {
+                target.add();
+            }
+        });
+
+        add(comboTipoPessoa);
+
+        AjaxFallbackPanel
+
         final ClienteForm cliente = new ClienteForm();
         CompoundPropertyModel<ClienteForm> clienteFormCompoundPropertyModel = new CompoundPropertyModel<ClienteForm>(cliente);
         Form<ClienteForm> form = new Form<ClienteForm>("formCliente", clienteFormCompoundPropertyModel) {
@@ -70,6 +86,8 @@ public class NewClient extends BasePage{
                 try {
                     clienteService.criarCliente(cliente);
                     System.out.println("Cadastro realizado com sucesso!");
+
+                    setResponsePage(ClientList.class);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -86,5 +104,12 @@ public class NewClient extends BasePage{
                 inputInscricaoEstadual,
                 inputDataCriacao,
                 comboTipoPessoa);
+    }
+
+    @Override
+    public void renderHead(IHeaderResponse response) {
+        super.renderHead(response);
+
+        response.render(CssHeaderItem.forReference(new PackageResourceReference(BasePage.class, "./NewClient.css")));
     }
 }
