@@ -18,7 +18,7 @@ public class ClienteForm implements Serializable {
 
     //pessoa jurídica
     private String razaoSocial;
-    private String incricaoEstadual;
+    private String inscricaoEstadual;
     private Date dataCriacao;
 
     public String getCpfCnpj() {
@@ -77,12 +77,12 @@ public class ClienteForm implements Serializable {
         this.razaoSocial = razaoSocial;
     }
 
-    public String getIncricaoEstadual() {
-        return incricaoEstadual;
+    public String getInscricaoEstadual() {
+        return inscricaoEstadual;
     }
 
-    public void setIncricaoEstadual(String incricaoEstadual) {
-        this.incricaoEstadual = incricaoEstadual;
+    public void setInscricaoEstadual(String incricaoEstadual) {
+        this.inscricaoEstadual = incricaoEstadual;
     }
 
     public Date getDataCriacao() {

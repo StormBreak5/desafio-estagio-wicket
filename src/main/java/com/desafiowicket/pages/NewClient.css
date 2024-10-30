@@ -28,9 +28,13 @@
     gap: 10px;
 }
 
-.client-form > div {
+.input-container, .gapper {
     display: flex;
     flex-direction: column;
+}
+
+.gapper {
+    gap: 10px;
 }
 
 button {
@@ -38,4 +42,5 @@ button {
     border-radius: 20px;
     border: 0;
     padding: 5px;
+    margin-top: 10px;
 }
