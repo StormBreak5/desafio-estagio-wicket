@@ -2,7 +2,9 @@ package com.desafiowicket.service;
 
 import com.desafiowicket.model.ClienteForm;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.io.IOUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -14,12 +16,13 @@ import org.apache.http.impl.client.HttpClients;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class HttpService implements Serializable {
 
     private final String apiUrl = "http://localhost:8081/";
-    ObjectMapper mapper = new ObjectMapper();
+    ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     public List<ClienteForm> listaClientes() throws Exception {
         try(CloseableHttpClient httpClient = HttpClients.createDefault()) {
@@ -29,7 +32,12 @@ public class HttpService implements Serializable {
                 int codStatus = response.getStatusLine().getStatusCode();
                 if (codStatus == 200) {
                     try (InputStream content = response.getEntity().getContent()) {
-                        return mapper.readValue(content, new TypeReference<List<ClienteForm>>() {});
+                        String jsonString = IOUtils.toString(content, StandardCharsets.UTF_8);
+//                        return mapper.readValue(content, new TypeReference<List<ClienteForm>>() {});
+
+                        PaginatedResponseService<ClienteForm> paginatedResponse = mapper.readValue(jsonString, new TypeReference<PaginatedResponseService<ClienteForm>>() {});
+
+                        return paginatedResponse.getContent();
                     }
                 } else {
                     throw new RuntimeException("Erro ao obter os clientes: " + codStatus);

@@ -7,8 +7,9 @@
     <body>
         <wicket:extend>
             <h1>Lista de Clientes</h1>
-            <table>
-                <thead>
+            <div wicket:id="clientListContainer">
+                <table>
+                    <thead>
                     <tr>
                         <th>Nome</th>
                         <th>CPF</th>
@@ -16,8 +17,8 @@
                         <th>Data de Nascimento</th>
                         <th>E-mail</th>
                     </tr>
-                </thead>
-                <tbody wicket:id="clienteList">
+                    </thead>
+                    <tbody wicket:id="clienteList">
                     <tr>
                         <td wicket:id="nome">[Nome]</td>
                         <td wicket:id="cpfCnpj">[CPF]</td>
@@ -25,8 +26,10 @@
                         <td wicket:id="dataNascimento">[Nascimento]</td>
                         <td wicket:id="email">[e-mail]</td>
                     </tr>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+            <span wicket:id="teste"></span>
         </wicket:extend>
     </body>
 </html>

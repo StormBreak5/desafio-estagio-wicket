@@ -6,22 +6,67 @@
 </head>
 <body>
 <wicket:extend>
-    <h1 wicket:id="titulo">[titulo]</h1>
-    <form wicket:id="formCliente" >
-        <select wicket:id="tipoPessoa">
-            <option>[primeira]</option>
-            <option>[segunda]</option>
-        </select>
-        <input wicket:id="nome" type="text" placeholder="Nome" />
-        <input wicket:id="razaoSocial" type="text" placeholder="Razão Social" />
-        <input wicket:id="cpfCnpj" type="text" placeholder="CPF" />
-        <input wicket:id="rg" type="text" placeholder="RG" />
-        <input wicket:id="incricaoEstadual" type="text" placeholder="Inscrição Estadual" />
-        <input wicket:id="dataNascimento" type="date" placeholder="Data de Nascimento" />
-        <input wicket:id="dataCriacao" type="date" placeholder="Data de Criação" />
-        <input wicket:id="email" type="text" placeholder="E-mail" />
-        <button type="submit" name="submit">Cadastrar</button>
-    </form>
+    <div wicket:id="feedback">[hmm~]</div>
+    <div class="container">
+        <h1 wicket:id="titulo">[titulo]</h1>
+
+        <div class="form-container">
+            <form wicket:id="formCliente" class="client-form" >
+                <div class="input-container">
+                    <label>Selecione o tipo de pessoa</label>
+                    <select wicket:id="tipoPessoa">
+                        <option>[primeira]</option>
+                        <option>[segunda]</option>
+                    </select>
+                </div>
+                <div wicket:id="containerPF" class="gapper">
+                    <div class="input-container">
+                        <label>Nome</label>
+                        <input wicket:id="nome" type="text" placeholder="Nome" required/>
+                    </div>
+                    <div class="input-container">
+                        <label>CPF</label>
+                        <input wicket:id="cpf" type="text" placeholder="CPF" required/>
+                    </div>
+                    <div class="input-container">
+                        <label>RG</label>
+                        <input wicket:id="rg" type="text" placeholder="RG" required/>
+                    </div>
+                    <div class="input-container">
+                        <label>Data de Nascimento</label>
+                        <input wicket:id="dataNascimento" type="date" required/>
+                    </div>
+                    <div class="input-container">
+                        <label>E-mail</label>
+                        <input wicket:id="emailPf" type="text" placeholder="E-mail" required/>
+                    </div>
+                </div>
+                <div wicket:id="containerPJ" class="gapper">
+                    <div class="input-container">
+                        <label>Razão Social</label>
+                        <input wicket:id="razaoSocial" type="text"  placeholder="Razão Social" required />
+                    </div>
+                    <div class="input-container">
+                        <label>CNPJ</label>
+                        <input wicket:id="cnpj" type="text" placeholder="CNPJ" required/>
+                    </div>
+                    <div class="input-container">
+                        <label>Inscrição Estadual</label>
+                        <input wicket:id="inscricaoEstadual" type="text" placeholder="Inscrição Estadual" required/>
+                    </div>
+                    <div class="input-container">
+                        <label>Data de Criação</label>
+                        <input wicket:id="dataCriacao" type="date" placeholder="Data de Criação" required/>
+                    </div>
+                    <div class="input-container">
+                        <label>E-mail</label>
+                        <input wicket:id="emailPj" type="text" placeholder="E-mail" required/>
+                    </div>
+                </div>
+                <button type="submit" name="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
 </wicket:extend>
 </body>
 </html>

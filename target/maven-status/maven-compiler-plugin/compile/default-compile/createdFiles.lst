@@ -1,10 +1,13 @@
 com\desafiowicket\model\ClienteForm.class
 com\desafiowicket\pages\NewClient.class
+com\desafiowicket\pages\NewClient$3.class
 com\desafiowicket\service\HttpService.class
+com\desafiowicket\service\HttpService$1.class
 com\desafiowicket\WicketApplication.class
 com\desafiowicket\pages\NewClient$2.class
 com\desafiowicket\HomePage.class
 com\desafiowicket\model\TipoPessoa.class
 com\desafiowicket\pages\NewClient$1.class
+com\desafiowicket\pages\ClientList$1.class
 com\desafiowicket\pages\ClientList.class
 com\desafiowicket\pages\BasePage.class
