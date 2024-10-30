@@ -5,9 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.*;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -33,9 +31,8 @@ public class HttpService implements Serializable {
                 if (codStatus == 200) {
                     try (InputStream content = response.getEntity().getContent()) {
                         String jsonString = IOUtils.toString(content, StandardCharsets.UTF_8);
-//                        return mapper.readValue(content, new TypeReference<List<ClienteForm>>() {});
-
-                        PaginatedResponseService<ClienteForm> paginatedResponse = mapper.readValue(jsonString, new TypeReference<PaginatedResponseService<ClienteForm>>() {});
+                        PaginatedResponseService<ClienteForm> paginatedResponse = mapper
+                                .readValue(jsonString, new TypeReference<PaginatedResponseService<ClienteForm>>() {});
 
                         return paginatedResponse.getContent();
                     }
@@ -64,4 +61,35 @@ public class HttpService implements Serializable {
             }
         }
     };
+
+    public void atualizaCliente(ClienteForm cliente) throws Exception {
+        try(CloseableHttpClient httpClient = HttpClients.createDefault()) {
+            String json = mapper.writeValueAsString(cliente);
+            HttpPut httpPut = new HttpPut(apiUrl + "clientes/" + cliente.getId());
+
+            try (CloseableHttpResponse response = httpClient.execute(httpPut)) {
+                int codStatus = response.getStatusLine().getStatusCode();
+                if(codStatus == 200) {
+                    System.out.println("Cliente atualizado com sucesso!");
+                } else {
+                    System.out.println("Erro ao atualizar cliente: " + codStatus);
+                }
+            }
+        }
+    }
+
+    public void deletarClientePorId(Long id) throws Exception {
+        try(CloseableHttpClient httpClient = HttpClients.createDefault()) {
+            HttpDelete httpDelete = new HttpDelete(apiUrl + "clientes/" + id);
+
+            try (CloseableHttpResponse response = httpClient.execute(httpDelete)) {
+                int codStatus = response.getStatusLine().getStatusCode();
+                if(codStatus == 200 || codStatus == 204) {
+                    System.out.println("Cliente deletado com sucesso!");
+                } else {
+                    System.out.println("Erro ao deletar cliente: " + codStatus);
+                }
+            }
+        }
+    }
 }

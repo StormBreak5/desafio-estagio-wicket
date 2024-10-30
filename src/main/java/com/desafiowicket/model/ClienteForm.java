@@ -6,6 +6,7 @@ import java.util.Date;
 public class ClienteForm implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    private Long id;
     private TipoPessoa tipoPessoa;
     private String cpfCnpj;
     private String email;
@@ -20,6 +21,14 @@ public class ClienteForm implements Serializable {
     private String razaoSocial;
     private String inscricaoEstadual;
     private Date dataCriacao;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getCpfCnpj() {
         return cpfCnpj;
