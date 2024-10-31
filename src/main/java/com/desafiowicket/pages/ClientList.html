@@ -8,6 +8,7 @@
         <wicket:extend>
             <div wicket:id="feedback"></div>
             <h1>Lista de Clientes</h1>
+            <h2>Pessoas Físicas</h2>
             <div wicket:id="clientListContainer">
                 <table>
                     <thead>
@@ -28,8 +29,53 @@
                         <td wicket:id="dataNascimento">[Nascimento]</td>
                         <td wicket:id="email">[e-mail]</td>
                         <td>
-                            <button wicket:id="editButton">[Editar]</button>
-                            <button wicket:id="deleteButton">[Excluir]</button>
+                            <button wicket:id="editButton" class="icon-button">
+                                <svg wicket:id="edit-icon" class="icon">
+                                    <use xlink:href="#icon-edit"/>
+                                </svg>
+                            </button>
+                            <button wicket:id="deleteButton" class="icon-button">
+                                <svg wicket:id="delete-icon" class="icon">
+                                    <use xlink:href="#icon-delete"/>
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Pessoas Jurídicas</h2>
+            <div wicket:id="clientListContainer">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Razão Social</th>
+                        <th>CNPJ</th>
+                        <th>Inscrição Estadual</th>
+                        <th>Data de Criação</th>
+                        <th>E-mail</th>
+                        <th>Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody wicket:id="clienteList">
+                    <tr>
+                        <td wicket:id="nome">[Razão]</td>
+                        <td wicket:id="cpfCnpj">[CNPJ]</td>
+                        <td wicket:id="rg">[Inscrição]</td>
+                        <td wicket:id="dataNascimento">[Criação]</td>
+                        <td wicket:id="email">[e-mail]</td>
+                        <td>
+                            <button wicket:id="editButton" class="icon-button">
+                                <svg wicket:id="edit-icon" class="icon">
+                                    <use xlink:href="#icon-edit"/>
+                                </svg>
+                            </button>
+                            <button wicket:id="deleteButton" class="icon-button">
+                                <svg wicket:id="delete-icon" class="icon">
+                                    <use xlink:href="#icon-delete"/>
+                                </svg>
+                            </button>
                         </td>
                     </tr>
                     </tbody>
@@ -37,6 +83,7 @@
             </div>
             <span wicket:id="teste"></span>
             <div wicket:id="modalEdit"></div>
+            <div wicket:id="modalDelete"></div>
         </wicket:extend>
     </body>
 </html>

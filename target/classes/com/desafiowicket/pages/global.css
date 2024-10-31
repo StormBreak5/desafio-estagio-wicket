@@ -41,6 +41,31 @@ h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
 }
 
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.icon-button:hover {
+    transform: scale(1.2);
+}
+
+.icon-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.icon-button:nth-child(1) svg {
+    fill: #007bff;
+}
+
+.icon-button:nth-child(2) svg {
+    fill: #dc3545;
+}
+
 /*
   9. Create a root stacking context
 */

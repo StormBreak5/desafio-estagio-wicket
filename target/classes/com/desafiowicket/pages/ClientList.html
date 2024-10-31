@@ -28,8 +28,16 @@
                         <td wicket:id="dataNascimento">[Nascimento]</td>
                         <td wicket:id="email">[e-mail]</td>
                         <td>
-                            <button wicket:id="editButton">[Editar]</button>
-                            <button wicket:id="deleteButton">[Excluir]</button>
+                            <button wicket:id="editButton" class="icon-button">
+                                <svg wicket:id="edit-icon" class="icon">
+                                    <use xlink:href="#icon-edit"/>
+                                </svg>
+                            </button>
+                            <button wicket:id="deleteButton" class="icon-button">
+                                <svg wicket:id="delete-icon" class="icon">
+                                    <use xlink:href="#icon-delete"/>
+                                </svg>
+                            </button>
                         </td>
                     </tr>
                     </tbody>
@@ -37,6 +45,7 @@
             </div>
             <span wicket:id="teste"></span>
             <div wicket:id="modalEdit"></div>
+            <div wicket:id="modalDelete"></div>
         </wicket:extend>
     </body>
 </html>
