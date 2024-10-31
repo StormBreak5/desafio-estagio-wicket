@@ -127,16 +127,6 @@ public class NewClient extends BasePage{
         form.add(containerPJ);
 
         add(form);
-
-//        form.add(inputCpfCnpj,
-//                inputEmail,
-//                inputNome,
-//                inputRg,
-//                inputDataNascimento,
-//                inputRazaoSocial,
-//                inputInscricaoEstadual,
-//                inputDataCriacao,
-//                comboTipoPessoa);
     }
 
     @Override

@@ -6,6 +6,7 @@
     </head>
     <body>
         <wicket:extend>
+            <div wicket:id="feedback"></div>
             <h1>Lista de Clientes</h1>
             <div wicket:id="clientListContainer">
                 <table>
@@ -16,6 +17,7 @@
                         <th>RG</th>
                         <th>Data de Nascimento</th>
                         <th>E-mail</th>
+                        <th>Ações</th>
                     </tr>
                     </thead>
                     <tbody wicket:id="clienteList">
@@ -25,6 +27,10 @@
                         <td wicket:id="rg">[RG]</td>
                         <td wicket:id="dataNascimento">[Nascimento]</td>
                         <td wicket:id="email">[e-mail]</td>
+                        <td>
+                            <button wicket:id="editButton">[Editar]</button>
+                            <button wicket:id="deleteButton">[Excluir]</button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

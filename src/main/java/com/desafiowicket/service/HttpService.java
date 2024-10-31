@@ -67,6 +67,9 @@ public class HttpService implements Serializable {
             String json = mapper.writeValueAsString(cliente);
             HttpPut httpPut = new HttpPut(apiUrl + "clientes/" + cliente.getId());
 
+            httpPut.setEntity(new StringEntity(json, ContentType.APPLICATION_JSON));
+            httpPut.setHeader("Content-type", "application/json");
+
             try (CloseableHttpResponse response = httpClient.execute(httpPut)) {
                 int codStatus = response.getStatusLine().getStatusCode();
                 if(codStatus == 200) {
