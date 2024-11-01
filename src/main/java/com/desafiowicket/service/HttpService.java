@@ -43,6 +43,25 @@ public class HttpService implements Serializable {
         }
     }
 
+    public ClienteForm buscaClientePorId(Long id) throws Exception {
+        try(CloseableHttpClient httpClient = HttpClients.createDefault()) {
+            HttpGet httpGet = new HttpGet(apiUrl + "clientes/" + id);
+
+            try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
+                int codStatus = response.getStatusLine().getStatusCode();
+
+                if (codStatus == 200) {
+                    try (InputStream content = response.getEntity().getContent()) {
+                        String jsonString = IOUtils.toString(content, StandardCharsets.UTF_8);
+                        return mapper.readValue(jsonString, ClienteForm.class);
+                    }
+                } else {
+                    throw new RuntimeException("Erro ao obter o cliente: " + codStatus);
+                }
+            }
+        }
+    }
+
     public void criarCliente(ClienteForm cliente) throws Exception {
         URL url = new URL(apiUrl + "clientes");
         String json = mapper.writeValueAsString(cliente);

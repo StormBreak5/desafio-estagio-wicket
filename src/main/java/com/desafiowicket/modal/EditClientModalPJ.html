@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Cliente</title>
+</head>
+<body>
+<wicket:panel>
+    <div class="modal-window">
+        <h2>Editar Cliente</h2>
+        <div wicket:id="feedback"></div>
+        <form wicket:id="form">
+            <div>
+                <div class="input-container">
+                    <label>Razão Social</label>
+                    <input wicket:id="razaoSocial" type="text" placeholder="Razão Social" required/>
+                </div>
+                <div class="input-container">
+                    <label>CNPJ</label>
+                    <input wicket:id="cnpj" type="text" placeholder="CNPJ" required/>
+                </div>
+                <div class="input-container">
+                    <label>Inscrição Estadual</label>
+                    <input wicket:id="inscricaoEstadual" type="text" placeholder="Inscrição Estadual" required/>
+                </div>
+                <div class="input-container">
+                    <label>Data de Criação</label>
+                    <input wicket:id="dataCriacao" type="date" required/>
+                </div>
+                <div class="input-container">
+                    <label>E-mail</label>
+                    <input wicket:id="emailPJ" type="text" placeholder="E-mail" required/>
+                </div>
+            </div>
+            <div class="button-container">
+                <button type="submit" wicket:id="saveButton" class="save-button">Salvar</button>
+                <button type="button" wicket:id="cancelButton" class="cancel-button">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</wicket:panel>
+
+</body>
+</html>

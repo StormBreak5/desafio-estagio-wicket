@@ -1,8 +1,14 @@
 C:\f\unika\src\main\java\com\desafiowicket\pages\BasePage.java
+C:\f\unika\src\main\java\com\desafiowicket\service\PaginatedResponseService.java
 C:\f\unika\src\main\java\com\desafiowicket\pages\ClientList.java
 C:\f\unika\src\main\java\com\desafiowicket\WicketApplication.java
 C:\f\unika\src\main\java\com\desafiowicket\model\ClienteForm.java
+C:\f\unika\src\main\java\com\desafiowicket\modal\EditClientModalPJ.java
 C:\f\unika\src\main\java\com\desafiowicket\HomePage.java
 C:\f\unika\src\main\java\com\desafiowicket\pages\NewClient.java
 C:\f\unika\src\main\java\com\desafiowicket\service\HttpService.java
+C:\f\unika\src\main\java\com\desafiowicket\modal\EditClientModalPF.java
+C:\f\unika\src\main\java\com\desafiowicket\icons\IconsResourceReference.java
+C:\f\unika\src\main\java\com\desafiowicket\icons\SvgIcon.java
+C:\f\unika\src\main\java\com\desafiowicket\modal\DeleteConfirmationModal.java
 C:\f\unika\src\main\java\com\desafiowicket\model\TipoPessoa.java

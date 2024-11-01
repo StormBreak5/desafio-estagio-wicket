@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Cliente</title>
+</head>
+<body>
+    <wicket:extend>
+        <div wicket:id="feedback"></div>
+
+        <div class="client-details">
+            <div wicket:id="pfContainer">
+                <h2>Dados do Cliente</h2>
+                <div class="infos">
+                    <p>Nome: <span wicket:id="nome"></span></p>
+                    <p>CPF: <span wicket:id="cpf"></span></p>
+                    <p>RG: <span wicket:id="rg"></span></p>
+                    <p>Data de Nascimento: <span wicket:id="dataNascimento"></span></p>
+                </div>
+            </div>
+
+            <div wicket:id="pjContainer">
+                <h2>Dados do Cliente</h2>
+                <div class="infos">
+                    <p>Razão Social: <span wicket:id="razaoSocial"></span></p>
+                    <p>CNPJ: <span wicket:id="cnpj"></span></p>
+                    <p>Inscrição Estadual: <span wicket:id="inscricaoEstadual"></span></p>
+                    <p>Data de Criação: <span wicket:id="dataCriacao"></span></p>
+                </div>
+            </div>
+
+            <div class="infos">
+                <p>Email: <span wicket:id="email"></span></p>
+            </div>
+
+            <h3>Endereços</h3>
+            <div class="enderecos-container">
+                <table class="enderecos">
+                    <thead>
+                    <tr>
+                        <th>Logradouro</th>
+                        <th>Número</th>
+                        <th>Complemento</th>
+                        <th>Bairro</th>
+                        <th>Cidade</th>
+                        <th>UF</th>
+                        <th>CEP</th>
+                        <th>Telefone</th>
+                        <th>Principal</th>
+                    </tr>
+                    </thead>
+                    <tbody wicket:id="enderecoList">
+                        <tr>
+                            <td wicket:id="logradouro"></td>
+                            <td wicket:id="numero"></td>
+                            <td wicket:id="complemento"></td>
+                            <td wicket:id="bairro"></td>
+                            <td wicket:id="cidade"></td>
+                            <td wicket:id="uf"></td>
+                            <td wicket:id="cep"></td>
+                            <td wicket:id="telefone"></td>
+                            <td wicket:id="principal"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </wicket:extend>
+</body>
+</html>

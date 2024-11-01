@@ -1,7 +1,9 @@
 package com.desafiowicket.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ClienteForm implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -21,6 +23,15 @@ public class ClienteForm implements Serializable {
     private String razaoSocial;
     private String inscricaoEstadual;
     private Date dataCriacao;
+    private List<Endereco> enderecos = new ArrayList<Endereco>();
+
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
+    }
 
     public Long getId() {
         return id;
