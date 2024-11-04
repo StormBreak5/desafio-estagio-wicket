@@ -1,0 +1,55 @@
+.client-details {
+    display: flex;
+    flex-direction: column;
+
+    margin: 40px 50px;
+    padding: 15px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    max-width: inherit;
+
+    background-color: white;
+}
+
+.client-details h3 {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.client-details table {
+    margin: 0 0 10px 0;
+}
+
+.client-details th {
+    background-color: gray;
+}
+
+.client-details th, td {
+    padding: 0 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.client-details td {
+    text-align: center;
+    max-width: 230px;
+}
+
+.enderecos-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.enderecos-container button {
+    background-color: lightgreen;
+    border-radius: 20px;
+    border: 0;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.enderecos-container button:hover {
+    background-color: green;
+    color: white;
+}

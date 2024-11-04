@@ -4,12 +4,15 @@ import com.desafiowicket.model.ClienteForm;
 import com.desafiowicket.model.Endereco;
 import com.desafiowicket.model.TipoPessoa;
 import com.desafiowicket.service.HttpService;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.request.resource.PackageResourceReference;
 
 public class Cliente extends BasePage{
     private static final long serialVersionUID = 1L;
@@ -65,5 +68,12 @@ public class Cliente extends BasePage{
             error("Erro ao carregar detalhes do cliente: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void renderHead(IHeaderResponse response) {
+        super.renderHead(response);
+
+        response.render(CssHeaderItem.forReference(new PackageResourceReference(Cliente.class, "./Cliente.css")));
     }
 }

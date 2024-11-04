@@ -12,6 +12,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    background-color: white;
 }
 
 .container > h1 {
@@ -43,4 +45,11 @@ button {
     border: 0;
     padding: 5px;
     margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: green;
+    color: white;
 }
