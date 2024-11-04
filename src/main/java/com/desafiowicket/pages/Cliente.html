@@ -34,7 +34,7 @@
             </div>
 
             <h3>Endereços</h3>
-            <div class="enderecos-container">
+            <div class="enderecos-container" wicket:id="enderecosContainer">
                 <table class="enderecos">
                     <thead>
                     <tr>
@@ -63,9 +63,10 @@
                         </tr>
                     </tbody>
                 </table>
-                <button>Adicionar Endereço</button>
             </div>
+            <button wicket:id="botaoNovoEndereco">Adicionar Endereço</button>
         </div>
+        <div wicket:id="modalNovoEndereco"></div>
     </wicket:extend>
 </body>
 </html>

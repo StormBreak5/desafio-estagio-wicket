@@ -40,16 +40,18 @@
     align-items: center;
 }
 
-.enderecos-container button {
+.client-details button {
     background-color: lightgreen;
     border-radius: 20px;
     border: 0;
+    margin: 0 auto;
+    width: inherit;
     padding: 5px 10px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.enderecos-container button:hover {
+.client-details button:hover {
     background-color: green;
     color: white;
 }

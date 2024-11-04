@@ -3,6 +3,7 @@ package com.desafiowicket.modal;
 import com.desafiowicket.model.Endereco;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
+import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
@@ -10,11 +11,19 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 
 public abstract class NewAddressModal extends Panel {
-    FeedbackPanel feedback = new FeedbackPanel("feedback");
+    private FeedbackPanel feedback;
+
+    public interface SaveAddressCallback {
+        void onSave(Endereco endereco);
+    }
+
+    private SaveAddressCallback callback;
 
     public NewAddressModal(String id, IModel<Endereco> model) {
         super(id, model);
+        this.callback = callback;
 
+        feedback = new FeedbackPanel("feedback");
         feedback.setOutputMarkupId(true);
         add(feedback);
 
@@ -30,6 +39,9 @@ public abstract class NewAddressModal extends Panel {
         form.add(new TextField<>("cidade").setRequired(true));
         form.add(new TextField<>("uf").setRequired(true));
         form.add(new TextField<>("telefone"));
+
+        CheckBox enderecoPrincipal = new CheckBox("enderecoPrincipal");
+        form.add(enderecoPrincipal);
 
         form.add(new AjaxButton("submitButton") {
             @Override
@@ -62,6 +74,10 @@ public abstract class NewAddressModal extends Panel {
         }.setDefaultFormProcessing(false));
     }
 
-    protected abstract void onSave(AjaxRequestTarget target);
+    protected void onSave(AjaxRequestTarget target) {
+        Endereco endereco = (Endereco) getDefaultModelObject();
+        callback.onSave(endereco);
+    }
+
     protected abstract void onCancel(AjaxRequestTarget target);
 }
