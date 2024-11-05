@@ -42,6 +42,36 @@ h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
 }
 
+header {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+
+    background-image: linear-gradient(lightgray, #F2F0EF);
+}
+
+.centralizer {
+    display: flex;
+    max-width: 1200px;
+    justify-content: space-between;
+    align-items: center;
+
+    height: inherit;
+    margin: auto;
+}
+
+.gapper-header {
+    display: flex;
+    gap: 10px;
+}
+
+.gapper-header a{
+    color: black;
+}
+
 .icon-button {
     background: none;
     border: none;
