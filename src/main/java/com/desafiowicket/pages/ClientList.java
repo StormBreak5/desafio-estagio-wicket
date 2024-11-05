@@ -84,6 +84,7 @@ public class ClientList extends BasePage {
                     item.add(new Label("rg", clientePF.getRg()));
                     item.add(new Label("dataNascimento", clientePF.getDataNascimento()));
                     item.add(new Label("email", clientePF.getEmail()));
+                    item.add(new Label("status", clientePF.getAtivo() ? "Ativo" : "Inativo"));
                     addActionBtns(item, clientePF);
                 }
             };
@@ -106,6 +107,7 @@ public class ClientList extends BasePage {
                     item.add(new Label("inscricaoEstadual", clientePJ.getInscricaoEstadual()));
                     item.add(new Label("dataCriacao", clientePJ.getDataCriacao()));
                     item.add(new Label("email", clientePJ.getEmail()));
+                    item.add(new Label("status", clientePJ.getAtivo() ? "Ativo" : "Inativo"));
                     addActionBtns(item, clientePJ);
                 }
             };

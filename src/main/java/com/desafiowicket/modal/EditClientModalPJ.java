@@ -6,6 +6,7 @@ import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
@@ -31,6 +32,7 @@ public abstract class EditClientModalPJ extends Panel {
         form.add(new TextField<>("inscricaoEstadual"));
         form.add(new DateTextField("dataCriacao", "yyyy-MM-dd").setRequired(true));
         form.add(new TextField<>("emailPJ", new PropertyModel<String>(model, "email")).setRequired(true));
+        form.add(new CheckBox("ativo"));
 
         form.add(new AjaxButton("saveButton") {
             @Override

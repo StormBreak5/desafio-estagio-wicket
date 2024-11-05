@@ -1,11 +1,13 @@
 package com.desafiowicket.pages;
 
+import com.desafiowicket.icons.SvgIcon;
 import com.desafiowicket.modal.NewAddressModal;
 import com.desafiowicket.model.ClienteForm;
 import com.desafiowicket.model.Endereco;
 import com.desafiowicket.model.TipoPessoa;
 import com.desafiowicket.service.HttpService;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -69,6 +71,7 @@ public class Cliente extends BasePage{
             add(pjContainer);
 
             add(new Label("email", Model.of(cliente.getEmail())));
+            add(new Label("status", Model.of(cliente.getAtivo() ? "Ativo" : "Inativo")));
 
             enderecosList = new ListView<Endereco>("enderecoList", cliente.getEnderecos()) {
                 @Override
@@ -83,6 +86,25 @@ public class Cliente extends BasePage{
                     item.add(new Label("cep", Model.of(endereco.getCep())));
                     item.add(new Label("telefone", Model.of(endereco.getTelefone())));
                     item.add(new Label("principal", Model.of(endereco.getEnderecoPrincipal() ? "Sim" : "Não")));
+
+//                    item.add(new AjaxLink<Void>("editButton") {
+//                        @Override
+//                        public void onClick(AjaxRequestTarget ajaxRequestTarget) {
+//
+//                        }
+//                    }.add(new SvgIcon("edit-icon", "icon-edit")));
+//
+//                    item.add(new AjaxLink<Void>("deleteButton") {
+//                        @Override
+//                        protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
+//                            super.updateAjaxAttributes(attributes);
+//                        }
+//
+//                        @Override
+//                        public void onClick(AjaxRequestTarget ajaxRequestTarget) {
+//
+//                        }
+//                    }.add(new SvgIcon("delete-icon", "icon-delete")));
                 }
             };
             enderecosContainer.add(enderecosList);
@@ -107,7 +129,6 @@ public class Cliente extends BasePage{
             @Override
             protected void onSave(AjaxRequestTarget target) {
                 try {
-                    // Handle principal address logic
                     if (Boolean.TRUE.equals(novoEndereco.getEnderecoPrincipal())) {
                         for (Endereco endereco : cliente.getEnderecos()) {
                             endereco.setEnderecoPrincipal(false);
@@ -116,21 +137,16 @@ public class Cliente extends BasePage{
                         novoEndereco.setEnderecoPrincipal(true);
                     }
 
-                    // Add new address and update client
                     cliente.getEnderecos().add(novoEndereco);
                     httpService.atualizaCliente(cliente);
 
-                    // Update the ListView's model
                     enderecosList.setModelObject(cliente.getEnderecos());
 
-                    // Add success message
                     Cliente.this.success("Endereço adicionado com sucesso!");
 
-                    // Update components
                     target.add(enderecosContainer);
                     target.add(Cliente.this.feedback);
 
-                    // Close modal
                     modalNovoEndereco.close(target);
                 } catch (Exception e) {
                     error("Erro ao salvar endereço: " + e.getMessage());

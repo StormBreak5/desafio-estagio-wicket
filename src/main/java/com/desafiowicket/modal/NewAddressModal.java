@@ -21,7 +21,6 @@ public abstract class NewAddressModal extends Panel {
 
     public NewAddressModal(String id, IModel<Endereco> model) {
         super(id, model);
-        this.callback = callback;
 
         feedback = new FeedbackPanel("feedback");
         feedback.setOutputMarkupId(true);
