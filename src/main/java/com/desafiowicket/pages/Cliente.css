@@ -43,7 +43,7 @@
     align-items: center;
 }
 
-.client-details button {
+.submit-btn {
     background-color: lightgreen;
     border-radius: 20px;
     border: 0;
@@ -54,7 +54,7 @@
     transition: all 0.3s ease;
 }
 
-.client-details button:hover {
+.submit-btn:hover {
     background-color: green;
     color: white;
 }

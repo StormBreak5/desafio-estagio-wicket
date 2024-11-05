@@ -1,12 +1,14 @@
 package com.desafiowicket.pages;
 
 import com.desafiowicket.icons.SvgIcon;
+import com.desafiowicket.modal.EditAddressModal;
 import com.desafiowicket.modal.NewAddressModal;
 import com.desafiowicket.model.ClienteForm;
 import com.desafiowicket.model.Endereco;
 import com.desafiowicket.model.TipoPessoa;
 import com.desafiowicket.service.HttpService;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.attributes.AjaxCallListener;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
@@ -26,6 +28,7 @@ public class Cliente extends BasePage{
     private static final long serialVersionUID = 1L;
     private HttpService httpService = new HttpService();
     private ModalWindow modalNovoEndereco;
+    private ModalWindow modalEditarEndereco;
     private ClienteForm cliente;
     private ListView<Endereco> enderecosList;
     private FeedbackPanel feedback;
@@ -46,6 +49,13 @@ public class Cliente extends BasePage{
         modalNovoEndereco.setTitle("");
         modalNovoEndereco.setCssClassName("custom-modal");
         add(modalNovoEndereco);
+
+        modalEditarEndereco = new ModalWindow("modalEditarEndereco");
+        modalEditarEndereco.setInitialHeight(700);
+        modalEditarEndereco.setInitialWidth(800);
+        modalEditarEndereco.setTitle("");
+        modalEditarEndereco.setCssClassName("custom-modal");
+        add(modalEditarEndereco);
 
         try {
             cliente = httpService.buscaClientePorId(clienteId);
@@ -87,24 +97,27 @@ public class Cliente extends BasePage{
                     item.add(new Label("telefone", Model.of(endereco.getTelefone())));
                     item.add(new Label("principal", Model.of(endereco.getEnderecoPrincipal() ? "Sim" : "Não")));
 
-//                    item.add(new AjaxLink<Void>("editButton") {
-//                        @Override
-//                        public void onClick(AjaxRequestTarget ajaxRequestTarget) {
-//
-//                        }
-//                    }.add(new SvgIcon("edit-icon", "icon-edit")));
-//
-//                    item.add(new AjaxLink<Void>("deleteButton") {
-//                        @Override
-//                        protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
-//                            super.updateAjaxAttributes(attributes);
-//                        }
-//
-//                        @Override
-//                        public void onClick(AjaxRequestTarget ajaxRequestTarget) {
-//
-//                        }
-//                    }.add(new SvgIcon("delete-icon", "icon-delete")));
+                    item.add(new AjaxLink<Void>("editButton") {
+                        @Override
+                        public void onClick(AjaxRequestTarget target) {
+                            showEditAddressModal(target, endereco);
+                        }
+                    }.add(new SvgIcon("edit-icon", "icon-edit")));
+
+                    item.add(new AjaxLink<Void>("deleteButton") {
+                        @Override
+                        protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
+                            super.updateAjaxAttributes(attributes);
+                            AjaxCallListener ajaxCallListener = new AjaxCallListener();
+                            ajaxCallListener.onPrecondition("return confirm('Tem certeza que deseja excluir este endereço?');");
+                            attributes.getAjaxCallListeners().add(ajaxCallListener);
+                        }
+
+                        @Override
+                        public void onClick(AjaxRequestTarget target) {
+                            deletaEndereco(target, endereco);
+                        }
+                    }.add(new SvgIcon("delete-icon", "icon-delete")));
                 }
             };
             enderecosContainer.add(enderecosList);
@@ -161,6 +174,56 @@ public class Cliente extends BasePage{
         });
 
         modalNovoEndereco.show(target);
+    }
+
+    private void showEditAddressModal(AjaxRequestTarget target, Endereco endereco) {
+        CompoundPropertyModel<Endereco> enderecoModel = new CompoundPropertyModel<>(endereco);
+
+        modalEditarEndereco.setContent(new EditAddressModal(modalNovoEndereco.getContentId(), enderecoModel,
+                new EditAddressModal.SaveAddressCallback() {
+                    @Override
+                    public void onSave(Endereco enderecoAtualizado, AjaxRequestTarget target) {
+                        try {
+                            if(enderecoAtualizado.getEnderecoPrincipal()) {
+                                for(Endereco endereco : cliente.getEnderecos()) {
+                                    if(!endereco.equals(enderecoAtualizado)) {
+                                        endereco.setEnderecoPrincipal(false);
+                                    }
+                                }
+                            }
+
+                            httpService.atualizaCliente(cliente);
+                            success("Endereço atualizado com sucesso!");
+                            target.add(enderecosContainer);
+                            modalEditarEndereco.close(target);
+                        } catch (Exception e) {
+                            error("Erro ao atualizar lista de endereços: " + e.getMessage());
+                        }
+
+                        target.add(feedback);
+                    }
+                }) {
+            @Override
+            protected void onCancel(AjaxRequestTarget target) {
+                modalEditarEndereco.close(target);
+            }
+        });
+
+        modalEditarEndereco.show(target);
+    }
+
+    public void deletaEndereco(AjaxRequestTarget target, Endereco endereco) {
+        try {
+            cliente.getEnderecos().remove(endereco);
+
+            httpService.atualizaCliente(cliente);
+            success("Endereço excluído com sucesso.");
+        } catch (Exception e) {
+            error("Erro ao excluir endereco: " + e.getMessage());
+        }
+
+        target.add(enderecosContainer);
+        target.add(feedback);
     }
 
     @Override

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wicket="http://wicket.apache.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Endereço</title>
+</head>
+<body>
+<wicket:panel>
+  <div class="modal-window">
+    <h2>Cadastro de Endereço</h2>
+    <div wicket:id="feedback"></div>
+    <form wicket:id="form">
+      <div>
+        <div class="input-container">
+          <label>Logradouro</label>
+          <input wicket:id="logradouro" type="text" placeholder="Logradouro" required/>
+        </div>
+        <div class="input-container">
+          <label>Número</label>
+          <input wicket:id="numero" type="text" placeholder="N°" required>
+        </div>
+        <div class="input-container">
+          <label>Complemento</label>
+          <input wicket:id="complemento" type="text" placeholder="Complemento"/>
+        </div>
+        <div class="input-container">
+          <label>Bairro</label>
+          <input wicket:id="bairro" type="text" placeholder="Bairro" required />
+        </div>
+        <div class="input-container">
+          <label>Cidade</label>
+          <input wicket:id="cidade" type="text" placeholder="Cidade" required />
+        </div>
+        <div class="input-container">
+          <label>UF</label>
+          <input wicket:id="uf" type="text" placeholder="UF" required />
+        </div>
+        <div class="input-container">
+          <label>CEP</label>
+          <input wicket:id="cep" type="text" placeholder="CEP" required />
+        </div>
+        <div class="input-container">
+          <label>Telefone</label>
+          <input wicket:id="telefone" type="text" placeholder="Telefone" required />
+        </div>
+        <div class="input-container">
+          <label>Endereço Principal</label>
+          <input wicket:id="enderecoPrincipal" type="checkbox" />
+        </div>
+        <div class="button-container" >
+          <button type="submit" wicket:id="saveButton" >Salvar</button>
+          <button type="button" wicket:id="cancelButton" >Cancelar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</wicket:panel>
+
+</body>
+</html>
