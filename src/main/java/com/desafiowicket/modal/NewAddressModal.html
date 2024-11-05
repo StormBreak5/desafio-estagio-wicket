@@ -43,13 +43,12 @@
                         <label>Telefone</label>
                         <input wicket:id="telefone" type="text" placeholder="Telefone" required />
                     </div>
-                    <div class="input-container">
-                        <label>Endereço Principal</label>
-                        <input wicket:id="enderecoPrincipal" type="checkbox" />
+                    <div class="input-container check-container">
+                        <label><input wicket:id="enderecoPrincipal" type="checkbox" /> Endereço Principal</label>
                     </div>
                     <div class="button-container" >
-                        <button type="submit" wicket:id="submitButton" >Salvar</button>
-                        <button type="button" wicket:id="cancelButton" >Cancelar</button>
+                        <button type="submit" wicket:id="submitButton" class="save-button">Salvar</button>
+                        <button type="button" wicket:id="cancelButton" class="cancel-button">Cancelar</button>
                     </div>
                 </div>
             </form>

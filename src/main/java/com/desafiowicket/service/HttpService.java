@@ -114,4 +114,19 @@ public class HttpService implements Serializable {
             }
         }
     }
+
+    public void deletaEndereco(Long clienteId, Long enderecoId) throws Exception {
+        try(CloseableHttpClient httpClient = HttpClients.createDefault()) {
+            HttpDelete httpDelete = new HttpDelete(apiUrl + "clientes/" + clienteId + "/enderecos/" + enderecoId);
+
+            try(CloseableHttpResponse response = httpClient.execute(httpDelete)) {
+                int codStatus = response.getStatusLine().getStatusCode();
+                if(codStatus == 200 || codStatus == 204) {
+                    System.out.println("Endereço deletado com sucesso!");
+                } else {
+                    throw new RuntimeException("Erro ao deletar cliente: " + codStatus);
+                }
+            }
+        }
+    }
 }

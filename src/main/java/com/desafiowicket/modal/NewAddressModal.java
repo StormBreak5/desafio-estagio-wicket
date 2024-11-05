@@ -3,12 +3,15 @@ package com.desafiowicket.modal;
 import com.desafiowicket.model.Endereco;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.request.resource.PackageResourceReference;
 
 public abstract class NewAddressModal extends Panel {
     private FeedbackPanel feedback;
@@ -79,4 +82,11 @@ public abstract class NewAddressModal extends Panel {
     }
 
     protected abstract void onCancel(AjaxRequestTarget target);
+
+    @Override
+    public void renderHead(IHeaderResponse response) {
+        super.renderHead(response);
+
+        response.render(CssHeaderItem.forReference(new PackageResourceReference(NewAddressModal.class, "./AddressModal.css")));
+    }
 }

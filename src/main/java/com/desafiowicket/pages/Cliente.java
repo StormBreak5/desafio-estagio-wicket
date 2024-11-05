@@ -214,9 +214,9 @@ public class Cliente extends BasePage{
 
     public void deletaEndereco(AjaxRequestTarget target, Endereco endereco) {
         try {
+            httpService.deletaEndereco(cliente.getId(), endereco.getIdEndereco());
             cliente.getEnderecos().remove(endereco);
 
-            httpService.atualizaCliente(cliente);
             success("Endereço excluído com sucesso.");
         } catch (Exception e) {
             error("Erro ao excluir endereco: " + e.getMessage());

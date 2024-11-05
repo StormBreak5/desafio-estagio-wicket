@@ -1,0 +1,105 @@
+.modal-window {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.modal-window h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    margin-bottom: 15px;
+}
+
+.check-container {
+    display: inline-block;
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+.check-container label {
+    vertical-align: middle;
+}
+
+.check-container input {
+    vertical-align: middle;
+    width: 10%;
+}
+
+label {
+    display: block;
+    color: #555;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.modal-window button {
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+}
+
+.modal-window .save-button {
+    background-color: #5bb450;
+    color: white;
+    border: none;
+}
+
+.modal-window .save-button:hover {
+    background-color: green;
+}
+
+.modal-window .cancel-button {
+    background-color: white;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+.modal-window .cancel-button:hover {
+    background-color: #ff5b5e;
+    color: white;
+}
+
+.wicket-modal {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* remove a barra de título */
+.custom-modal .w_caption {
+    display: none !important;
+}
+
+/* Ajusta para que o conteúdo da modal ocupe o espaço completo */
+.custom-modal .w_content {
+    top: 0 !important;
+    height: 100% !important;
+}
