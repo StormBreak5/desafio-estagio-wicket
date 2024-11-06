@@ -11,9 +11,12 @@ import org.apache.wicket.ajax.attributes.AjaxCallListener;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.link.ExternalLink;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
@@ -33,11 +36,15 @@ public class ClientList extends BasePage {
     private WebMarkupContainer clientListPFContainer;
     private WebMarkupContainer clientListPJContainer;
 
+    private String relatoriosUrl;
+
     public ClientList() {
 
         feedback = new FeedbackPanel("feedback");
         feedback.setOutputMarkupId(true);
         add(feedback);
+
+        relatoriosUrl = "http://localhost:8081/relatorios/clientes/";
 
         modalEdit = new ModalWindow("modalEdit");
         modalEdit.setInitialWidth(600);
@@ -64,6 +71,11 @@ public class ClientList extends BasePage {
             List<ClienteForm> clientesPJ = clientes.stream()
                     .filter(c -> TipoPessoa.JURIDICA.equals(c.getTipoPessoa()))
                     .collect(Collectors.toList());
+
+            clientListPFContainer.add(new ExternalLink("exportPFPDF", relatoriosUrl + "pdf"));
+            clientListPJContainer.add(new ExternalLink("exportPJPDF", relatoriosUrl + "pdfPJ"));
+            clientListPFContainer.add(new ExternalLink("exportPFExcel", relatoriosUrl + "excel"));
+            clientListPJContainer.add(new ExternalLink("exportPJExcel", relatoriosUrl + "excelPJ"));
 
             ListView<ClienteForm> listViewPF = new ListView<ClienteForm>("listViewPF", clientesPF) {
 
